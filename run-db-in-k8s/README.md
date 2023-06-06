@@ -1,6 +1,6 @@
 ## Run a production Database in K8s
 
-This is the code & commands I used in my video on running the MySQL cluster in K8s.
+This is the code & commands I used in my [Video](https://youtu.be/UDXnyh0vtXw) on running the MySQL cluster in K8s.
 
 1. Spin up a new Linux VM
 2. Install `minikube` & `kubectl`
