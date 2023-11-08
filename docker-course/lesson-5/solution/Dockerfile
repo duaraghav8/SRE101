@@ -1,7 +1,7 @@
 # Base Image
 FROM python:3.12
 
-
+# Set process working directory
 WORKDIR /app
 
 # Install dependencies
