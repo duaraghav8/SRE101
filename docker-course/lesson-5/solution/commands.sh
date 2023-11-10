@@ -5,6 +5,11 @@ pip3 install flask # In case you don't already have flask
 python3 app.py
 
 # Build
+# NOTE: You may need to build your image for multiple platforms depending on your situation.
+# For eg- If you're building on Apple Silicon but will run the container on a Linux machine, you will get platform-related errors.
+# A simple way to build for the right architecture is to use --platform linux/amd64 option with the build command.
+# See full documentation about multi-architecture builds:
+# https://docs.docker.com/build/building/multi-platform/
 docker build -t hello-app:latest .
 docker images
 
