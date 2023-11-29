@@ -23,3 +23,7 @@ docker run \
     -it \
     --mount 'type=volume,src=voltest2,dst=/data,volume-driver=local' \
     voltest
+
+# Cleanup
+docker rmi voltest
+docker volume rm voltest
