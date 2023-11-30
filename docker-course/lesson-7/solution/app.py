@@ -14,7 +14,8 @@ def main():
 
         with open(data_file, "r") as reader:
             print(reader.read())
-            print()
+        
+        print()
     else:
         print(f"FILE {data_file} DOESN'T ALREADY EXIST")
 
