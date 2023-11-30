@@ -1,7 +1,7 @@
 import os
+from datetime import datetime
 
 data_file = "/data/data.txt"
-message = "Hello world!"
 
 
 # Try to read the data file
@@ -10,13 +10,17 @@ message = "Hello world!"
 def main():
     if os.path.isfile(data_file):
         print(f"FILE {data_file} ALREADY EXISTS!")
-        print("Printing contents...")
+        print("Printing contents ->\n")
 
         with open(data_file, "r") as reader:
             print(reader.read())
+            print()
     else:
         print(f"FILE {data_file} DOESN'T ALREADY EXIST")
-        print(f"Creating new file with message message '{message}'")
+
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        message = f"Hello world!\nThis message was written on {now}"
+        print(f"Creating new file with message ->\n\n{message}\n")
 
         with open(data_file, "w") as writer:
             writer.write(message)
