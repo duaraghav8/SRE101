@@ -38,11 +38,9 @@ app.register_blueprint(res_bp)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
 
 # TODO
-# create the right fib algorithm functions
-# (optional) print logs to stdout
+# create load-testing mechanism/script
 # Setup z24x7 APM - https://www.site24x7.com/help/apm/python-agent/add-python-agent-in-kubernetes.html?src=cross-links&pg=help
