@@ -19,7 +19,7 @@ spec:
         - name: s247agent
       containers:
         - name: flaskapi
-          image: duaraghav8/python-api:latest
+          image: duaraghav8/python-api:0.0.3
           command: ["/bin/sh", "-c", "/home/apm/agent_start.sh"] # Run the APM agent instead of the application
           imagePullPolicy: Always
           ports:
