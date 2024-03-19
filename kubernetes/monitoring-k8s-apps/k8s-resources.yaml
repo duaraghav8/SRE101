@@ -32,7 +32,7 @@ spec:
             - name: S247_LICENSE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: pythonapp-secret # This secret must already have been created separately
+                  name: app-secret # This secret must already have been created separately
                   key: s247licensekey
           volumeMounts:
             - mountPath: /home/apm
