@@ -44,3 +44,4 @@ if __name__ == "__main__":
 # TODO
 # create load-testing mechanism/script
 # Setup z24x7 APM - https://www.site24x7.com/help/apm/python-agent/add-python-agent-in-kubernetes.html?src=cross-links&pg=help
+# Specify cpu+memory resources allocated to each pod

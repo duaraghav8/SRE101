@@ -15,11 +15,37 @@ spec:
       labels:
         app: flaskapi
     spec:
+      volumes:
+        - name: s247agent
       containers:
         - name: flaskapi
           image: duaraghav8/python-api:latest
+          command: ["/bin/sh", "-c", "/home/apm/agent_start.sh"] # Run the APM agent instead of the application
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
+          env:
+            - name: APP_RUN_COMMAND
+              value: "python3 app.py" # Tell the APM agent how to start the app
+            - name: APM_APP_NAME
+              value: "resource-eater-api"
+            - name: S247_LICENSE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: pythonapp-secret # This secret must already have been created separately
+                  key: s247licensekey
+          volumeMounts:
+            - mountPath: /home/apm
+              name: s247agent
+      initContainers:
+        - name: agent-copy-init
+          command: ["cp","-r","/opt/site24x7/.","/home/apm"]
+          image: site24x7/apminsight-pythonagent:latest
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /home/apm
+              name: s247agent
+          restartPolicy: Always
 
 ---
 apiVersion: v1
