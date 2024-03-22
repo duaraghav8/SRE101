@@ -1,9 +1,26 @@
+import random
+
 from flask import Flask, Blueprint, request
 import resource_user as eater
 
 app = Flask(__name__)
 
 res_bp = Blueprint("resource_user", __name__, url_prefix="/resource_user")
+
+
+@app.route("/random_client_side_error")
+def rcse():
+    return {"status": "client_failure"}, random.randrange(400, 418)
+
+
+@app.route("/random_server_side_error")
+def rsse():
+    return {"status": "server_failure"}, random.randrange(500, 508)
+
+
+@app.route("/unhandled_exception")
+def ue():
+    raise Exception("Unhandled exception!")
 
 
 @res_bp.route("/high_cpu_low_mem")
@@ -43,5 +60,6 @@ if __name__ == "__main__":
 
 # TODO
 # create load-testing mechanism/script
-# Setup z24x7 APM - https://www.site24x7.com/help/apm/python-agent/add-python-agent-in-kubernetes.html?src=cross-links&pg=help
+# Create endpoints to return error codes (server side + client side), throw unhandled exceptions, intentionally have high latency
 # Specify cpu+memory resources allocated to each pod
+# Add README and describe exact process of how to run this app and see metrics in Site24x7
