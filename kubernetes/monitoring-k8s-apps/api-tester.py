@@ -8,13 +8,14 @@ error_api_endpoints = [
     "/unhandled_exception",
 ]
 resource_api_endpoints = [
-    ("/resource_user/high_cpu_low_mem", 32),
-    ("/resource_user/high_cpu_high_mem", 32),
+    ("/resource_user/high_cpu_low_mem", 25),
+    ("/resource_user/high_cpu_high_mem", 25),
     ("/resource_user/low_cpu_low_mem", 10000000),
-    ("/resource_user/med_cpu_high_mem", 50000),
+    ("/resource_user/med_cpu_high_mem", 35000),
 ]
 
-base_url = "http://127.0.0.1:56971"
+port = 50264
+base_url = f"http://127.0.0.1:{port}"
 
 
 def make_request(endpoint):
