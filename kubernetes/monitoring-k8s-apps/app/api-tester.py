@@ -14,7 +14,7 @@ resource_api_endpoints = [
     ("/resource_user/med_cpu_high_mem", 35000),
 ]
 
-port = 50264
+port = 57264
 base_url = f"http://127.0.0.1:{port}"
 
 
