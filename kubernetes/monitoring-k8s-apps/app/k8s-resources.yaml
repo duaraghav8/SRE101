@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: flaskapi
-          image: duaraghav8/python-api:latest
+          image: duaraghav8/python-api:0.0.4
           ports:
             - containerPort: 5000
 
