@@ -46,7 +46,10 @@ def get_data():
 
 
 if __name__ == '__main__':
+    # Populate MySQL with dummy data so that it is
+    # available when the api controller attempts to read it.
     populate_mysql_data()
+
     app.run(host='0.0.0.0', port=5001)
 
 
