@@ -1,0 +1,9 @@
+{
+  "target": "pod/resource-eater-api-6fcd66b7d8-9f9gg",
+  "feature": {
+    "network": {
+      "incoming": "steal"
+    }
+  }
+}
+

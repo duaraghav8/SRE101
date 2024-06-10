@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource-eater-api
+  labels:
+    app: flaskapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaskapi
+  template:
+    metadata:
+      labels:
+        app: flaskapi
+    spec:
+      containers:
+        - name: flaskapi
+          image: duaraghav8/python-api:0.0.4
+          ports:
+            - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: resource-eater-api
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: flaskapi
+  type: NodePort
