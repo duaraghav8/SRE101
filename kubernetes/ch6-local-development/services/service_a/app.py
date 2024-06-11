@@ -15,7 +15,7 @@ def talk_to_service_b():
     foo_value = redis_client.get("foo")
 
     app.logger.info("Sending request to service B")
-    response = requests.get('http://service_b:5001/data')
+    response = requests.get('http://service-b:5001/data')
 
     return jsonify({
         "redis_foo_response": foo_value,
