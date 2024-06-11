@@ -29,14 +29,24 @@ spec:
           value: password
         ports:
         - containerPort: 3306
-      initContainers:
-      - name: init-mysql
-        image: mysql:latest
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: password
-        command:
-        - /bin/sh
-        - -c
-        - |
-          mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS sre101;"
+        volumeMounts:
+          - name: mysql-initdb
+            mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: mysql-initdb
+          configMap:
+            name: mysql-initdb-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS sre101;
+    USE sre101;
+    CREATE TABLE test_table (name VARCHAR(255), title VARCHAR(255));
+    INSERT INTO test_table (name, title) VALUES ('raghav', 'site reliability engineer');
+    INSERT INTO test_table (name, title) VALUES ('alice', 'devops engineer');
+    INSERT INTO test_table (name, title) VALUES ('bob', 'platform engineer');
+    INSERT INTO test_table (name, title) VALUES ('deadpool', 'x man');
