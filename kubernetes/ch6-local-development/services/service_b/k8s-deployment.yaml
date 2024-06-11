@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-b
+spec:
+  ports:
+    - port: 5001
+  selector:
+    app: service-b
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-b
+spec:
+  selector:
+    matchLabels:
+      app: service-b
+  template:
+    metadata:
+      labels:
+        app: service-b
+    spec:
+      containers:
+      - name: service-b
+        image: duaraghav8/flask_service_b:latest
+        ports:
+        - containerPort: 5001
