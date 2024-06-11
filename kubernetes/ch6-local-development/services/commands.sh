@@ -11,6 +11,6 @@ mysql -h localhost -P <MINIKUBE SERVICE PORT> --protocol=tcp -D sre101 -u root -
 
 kubectl apply -f redis/k8s-deployment.yaml
 
-kubectl apply -f service_a/k8s-deployment.yaml
-
 kubectl apply -f service_b/k8s-deployment.yaml
+
+kubectl apply -f service_a/k8s-deployment.yaml
