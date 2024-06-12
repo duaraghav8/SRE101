@@ -40,9 +40,14 @@ mirrord exec --target pod/<POD NAME> python3 app.py
 curl http://localhost:5000/complex_request
 curl http://localhost:5000/health
 
-# Steal all traffic on staging into local app
-# TODO
+# At this point you can also make a request to the staging
+# service A and see the request handled by local app.
+# The response returned by local app is discarded.
+# Change the response in your local app to prove this.
 
 # Run mirrord with specific configurtion
 mirrord exec -f mirrord-configs/steal-all-traffic.json
 mirrord exec -f mirrord-configs/steal-traffic-header-based.json
+
+# With traffic stealing enabled, response will look
+# different when handled by staging app or local app. Show this.
