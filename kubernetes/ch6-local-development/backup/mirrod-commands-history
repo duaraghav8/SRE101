@@ -1,0 +1,64 @@
+ 5230  brew install metalbear-co/mirrord/mirrord
+ 5254  mirrord --version
+ 5255  mirrord help
+ 5256  mirrord exec --help
+ 5328  mkdir ch6-local-dev-mirrord
+ 5330  cd ch6-local-dev-mirrord
+ 5363  mirrord exec --target pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5365  mirrord exec --target pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5366  vim mirrord-config.json
+ 5367  mirrord exec -f mirrord-config.json --target pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5372  vim mirrord-config.json
+ 5373  mirrord exec --help
+ 5374  vim mirrord-config.json
+ 5375  mirrord exec -f mirrord-config.json python3 app.py
+ 5376  mirrord exec --target pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5377  vim mirrord-config.json
+ 5378  mirrord exec -f mirrord-config.json python3 app.py
+ 5379  vim mirrord-config.json
+ 5380  mirrord exec -f mirrord-config.json python3 app.py
+ 5381  vim mirrord-config.json
+ 5382  mkdir mirrord
+ 5383  mv mirrord-config.json mirrord
+ 5384  cp mirrord/mirrord-config.json mirrord/mirrord-config-all-traffic.json
+ 5385  vim mirrord/mirrord-config-all-traffic.json
+ 5386  mirrord exec -f mirrord/mirrord-config-all-traffic.json python3 app.py
+ 5387  vim mirrord/mirrord-config.json
+ 5388  mirrord exec -f mirrord/mirrord-config.json python3 app.py
+ 5393  vim mirrord/mirrord-config.json
+ 5394  mirrord exec -f mirrord/mirrord-config.json python3 app.py
+ 5396  vim mirrord/mirrord-config.json
+ 5397  mirrord exec -f mirrord/mirrord-config.json python3 app.py
+ 5399  vim mirrord/mirrord-config.json
+ 5400  mirrord exec -f mirrord/mirrord-config.json python3 app.py
+ 5404  vim mirrord/mirrord-config.json
+ 5405  ll mirrord
+ 5406  vim mirrord/mirrord-config.json
+ 5412  cd code/SRE101/kubernetes/ch6-local-dev-mirrord
+ 5416  vim mirrord/mirrord-config-all-traffic.json
+ 5417  vim mirrord/mirrord-config.json
+ 5424  #mirrord exec -f mirrord/mirrord-config.json python3 app.py
+ 5425  vim mirrord/mirrord-config.json
+ 5426  mirrord exec --help
+ 5428  mirrord exec -t resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5429  mirrord exec -t pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5432  mirrord exec -t pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5438  #mirrord operator setup --accept-tos --license-key N2eLRboMLc3ZZHa9HQ5oBwSoqmTDY_5Q6Bx9klFXi-4 | kubectl apply -f -
+ 5440  mirrord operator setup --accept-tos --license-key N2eLRboMLc3ZZHa9HQ5oBwSoqmTDY_5Q6Bx9klFXi-4 | kubectl apply -f -
+ 5443  kubectl get mirrord
+ 5447  mirrord exec -t pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5448  mirrord operator status
+ 5453  cd kubernetes/ch6-local-dev-mirrord
+ 5465  mirrord exec -t pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5466  mirrord operator status
+ 5470  mirrord operator status
+ 5473  mirrord operator status
+ 5474  mirrord exec -t pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5475  mirrord operator status
+ 5477  mirrord exec -t pod/resource-eater-api-6fcd66b7d8-9f9gg python3 app.py
+ 5478  mirrord operator status
+ 5480  mirrord operator status
+ 5482  mirrord operator status
+ 5573  cd ch6-local-dev-mirrord
+ 5579  mv ch6-local-dev-mirrord ch6-local-development
+ 6004  history | grep mirrord

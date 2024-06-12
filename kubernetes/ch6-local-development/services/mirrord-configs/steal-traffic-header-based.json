@@ -1,0 +1,15 @@
+{
+  "target": "pod/<POD NAME>",
+  "feature": {
+    "network": {
+      "incoming": {
+        "mode": "steal",
+        "http_filter": {
+          "header_filter": "X-Tester: raghav",
+          "ports": [5000]
+        }
+      }
+    }
+  }
+}
+

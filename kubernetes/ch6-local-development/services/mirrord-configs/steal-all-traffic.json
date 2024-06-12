@@ -1,0 +1,9 @@
+{
+  "target": "pod/<POD NAME>",
+  "feature": {
+    "network": {
+      "incoming": "steal"
+    }
+  }
+}
+
