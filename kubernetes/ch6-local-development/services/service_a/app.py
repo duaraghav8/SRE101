@@ -21,8 +21,8 @@ def talk_to_service_b():
     app.logger.info("Reading environment variable 'HOST'")
     env_host = os.getenv("HOST", "ENV_HOST_NOT_FOUND")
 
-    app.logger.info("Reading data from local file '/app/data.txt'")
-    with open("/app/data.txt", "r") as datafile:
+    app.logger.info("Reading data from local file '/data/data.txt'")
+    with open("/data/data.txt", "r") as datafile:
         datafile_contents = datafile.read()
 
     return jsonify({

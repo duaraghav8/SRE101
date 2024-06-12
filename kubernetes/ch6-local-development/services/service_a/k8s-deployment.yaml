@@ -31,7 +31,7 @@ spec:
         - containerPort: 5000
         volumeMounts:
           - name: local-datafile
-            mountPath: /app
+            mountPath: /data
       volumes:
         - name: local-datafile
           configMap:
