@@ -1,3 +1,4 @@
+import os
 import requests
 from flask import Flask, jsonify
 import redis
@@ -17,9 +18,18 @@ def talk_to_service_b():
     app.logger.info("Sending request to service B")
     response = requests.get('http://service-b:5001/data')
 
+    app.logger.info("Reading environment variable 'HOST'")
+    env_host = os.getenv("HOST", "ENV_HOST_NOT_FOUND")
+
+    app.logger.info("Reading data from local file '/app/data.txt'")
+    with open("/app/data.txt", "r") as datafile:
+        datafile_contents = datafile.read()
+
     return jsonify({
         "redis_foo_response": foo_value,
-        "service_b_response": response.json()
+        "service_b_response": response.json(),
+        "env_var_HOST": env_host,
+        "datafile_contents": datafile_contents
     })
 
 

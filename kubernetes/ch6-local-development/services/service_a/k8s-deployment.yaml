@@ -24,5 +24,24 @@ spec:
       containers:
       - name: service-a
         image: duaraghav8/flask_service_a:latest
+        env:
+          - name: HOST
+            value: kubernetes_pod
         ports:
         - containerPort: 5000
+        volumeMounts:
+          - name: local-datafile
+            mountPath: /app
+      volumes:
+        - name: local-datafile
+          configMap:
+            name: local-file-with-dummy-data
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: local-file-with-dummy-data
+data:
+  data.txt: |
+    Hello world!
+    This is a file with some dummy data residing inside the K8s Pod :)
