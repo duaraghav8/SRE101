@@ -45,9 +45,9 @@ curl http://localhost:5000/health
 # The response returned by local app is discarded.
 # Change the response in your local app to prove this.
 
-# Run mirrord with specific configurtion
-mirrord exec -f mirrord-configs/steal-all-traffic.json
-mirrord exec -f mirrord-configs/steal-traffic-header-based.json
+# Run mirrord with specific configurtion (traffic stealing)
+mirrord exec -f mirrord-configs/steal-all-traffic.json --target pod/<POD NAME> python3 app.py
+mirrord exec -f mirrord-configs/steal-traffic-header-based.json --target pod/<POD NAME> python3 app.py
 
 # With traffic stealing enabled, response will look
 # different when handled by staging app or local app. Show this.
