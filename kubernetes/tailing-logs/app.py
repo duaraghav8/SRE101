@@ -33,9 +33,27 @@ def log_json(level, message):
     elif level == 'ERROR':
         logger.error(message)
 
+def get_random_error():
+    messages = [
+        "[Errno 10104] getaddrinfo failed",
+        "failed to write data to mysql",
+        "module 'accounts-closure' not found",
+        "[Errno 2] No such file or directory '/home/prodapp/local/tabs.txt'"
+    ]
+    return random.choice(messages)
+
+def get_random_warning():
+    messages = [
+        "connection to redis closed",
+        "unable to resolve dns name 'executor.internal'",
+        "limiting requests, client: 35.221.143.27, referrer: 'http://example.com'",
+        "Error from server (NotFound): pods \"prodapp-75c9c4fc78-dhgvm\" not found"
+    ]
+    return random.choice(messages)
+
 def background_logger():
     while True:
-        time.sleep(2)
+        time.sleep(1)
         log_type = random.choice(['INFO', 'INFO', 'INFO', 'WARNING', 'ERROR'])
         if log_type == 'INFO':
             method = random.choice(["GET", "POST", "PUT"])
@@ -45,11 +63,11 @@ def background_logger():
                 "devices",
                 "invoices/outstanding",
             ])
-            log_json('INFO', f"{method} /api/v2/{api}")
+            log_json('INFO', f"{method} /api/v2/{api} was called")
         elif log_type == 'WARNING':
-            log_json('WARNING', 'Sample warning log')
+            log_json('WARNING', get_random_warning())
         elif log_type == 'ERROR':
-            log_json('ERROR', 'Sample error log')
+            log_json('ERROR', get_random_error())
 
 def handle_sigint(signal, frame):
     log_json('ERROR', 'Failed to write to local disk, shutting down')
@@ -65,5 +83,8 @@ if __name__ == '__main__':
     bg_thread.start()
 
     while True:
-        log_json('INFO', 'Health check has succeeded')
-        time.sleep(6)
+        log_json('INFO', 'health check succeeded')
+        time.sleep(5)
+
+
+# TODO: make log messages more realistic
