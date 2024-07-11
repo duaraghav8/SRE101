@@ -19,4 +19,4 @@ spec:
         - containerPort: 5000
       - name: sidecar
         image: busybox
-        command: ['sh', '-c', 'while true; do echo $(date) Sample log from sidecar container; sleep 10; done']
+        command: ['sh', '-c', 'while true; do echo $(date) Sample log from sidecar container; sleep 3; done']
