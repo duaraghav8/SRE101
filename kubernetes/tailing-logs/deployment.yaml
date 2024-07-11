@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloapp-deployment
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app: helloapp
+  template:
+    metadata:
+      labels:
+        app: helloapp
+    spec:
+      containers:
+      - name: app
+        image: helloapp:latest
+        ports:
+        - containerPort: 5000
+      - name: sidecar
+        image: busybox
+        command: ['sh', '-c', 'while true; do echo $(date) Hello from the sidecar; sleep 10; done']
