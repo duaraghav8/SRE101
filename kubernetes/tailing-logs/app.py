@@ -85,6 +85,3 @@ if __name__ == '__main__':
     while True:
         log_json('INFO', 'health check succeeded')
         time.sleep(5)
-
-
-# TODO: make log messages more realistic
