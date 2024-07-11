@@ -38,14 +38,21 @@ def background_logger():
         time.sleep(5)
         log_type = random.choice(['INFO', 'INFO', 'INFO', 'WARNING', 'ERROR'])
         if log_type == 'INFO':
-            log_json('INFO', 'Background info log')
+            method = random.choice(["GET", "POST", "PUT"])
+            api = random.choice([
+                "users",
+                "accounts/2763/transactions",
+                "devices",
+                "invoices/outstanding",
+            ])
+            log_json('INFO', f"{method} /api/v2/{api}")
         elif log_type == 'WARNING':
-            log_json('WARNING', 'Background warning log')
+            log_json('WARNING', 'Sample warning log')
         elif log_type == 'ERROR':
-            log_json('ERROR', 'Background error log')
+            log_json('ERROR', 'Sample error log')
 
 def handle_sigint(signal, frame):
-    log_json('ERROR', 'Received SIGINT, exiting...')
+    log_json('ERROR', 'Failed to write to local disk, shutting down')
     sys.exit(1)
 
 if __name__ == '__main__':
@@ -57,10 +64,6 @@ if __name__ == '__main__':
     bg_thread.daemon = True
     bg_thread.start()
 
-    # Simulate some log entries
-    try:
-        while True:
-            log_json('INFO', 'Main thread is running')
-            time.sleep(10)
-    except KeyboardInterrupt:
-        handle_sigint(None, None)
+    while True:
+        log_json('INFO', 'Health check has succeeded')
+        time.sleep(10)
