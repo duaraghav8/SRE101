@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: duaraghav8/log-generator:latest
+        image: duaraghav8/log-generator:0.0.1
         ports:
         - containerPort: 5000
       - name: sidecar
