@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloapp-deployment
+  name: prodapp
 spec:
   replicas: 7
   selector:
     matchLabels:
-      app: helloapp
+      app: prodapp
   template:
     metadata:
       labels:
-        app: helloapp
+        app: prodapp
     spec:
       containers:
       - name: app
-        image: helloapp:latest
+        image: duaraghav8/log-generator:latest
         ports:
         - containerPort: 5000
       - name: sidecar

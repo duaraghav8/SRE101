@@ -35,7 +35,7 @@ def log_json(level, message):
 
 def background_logger():
     while True:
-        time.sleep(5)
+        time.sleep(2)
         log_type = random.choice(['INFO', 'INFO', 'INFO', 'WARNING', 'ERROR'])
         if log_type == 'INFO':
             method = random.choice(["GET", "POST", "PUT"])
@@ -66,4 +66,4 @@ if __name__ == '__main__':
 
     while True:
         log_json('INFO', 'Health check has succeeded')
-        time.sleep(10)
+        time.sleep(6)
