@@ -17,6 +17,6 @@ spec:
         image: duaraghav8/log-generator:0.0.2
         ports:
         - containerPort: 5000
-      - name: sidecar
+      - name: auth-agent
         image: busybox
-        command: ['sh', '-c', 'while true; do echo $(date) Sample log from sidecar container; sleep 3; done']
+        command: ['sh', '-c', 'while true; do echo $(date) renewing authentication token for client; sleep 3; done']
