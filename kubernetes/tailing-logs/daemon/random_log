@@ -1,0 +1,4 @@
+178.179.161.29. - - [12/Jul/2024:15:40:08 +0200] WARN "Could not read data from '/var/log/blobs.log'" 10738
+219.224.229.68. - - [12/Jul/2024:15:40:10 +0200] WARN "Could not read data from '/var/log/blobs.log'" 726
+68.66.122.126. - - [12/Jul/2024:15:40:14 +0200] WARN "Could not read data from '/var/log/blobs.log'" 12676
+83.14.190.88. - - [12/Jul/2024:15:40:24 +0200] WARN "Could not read data from '/var/log/blobs.log'" 5581

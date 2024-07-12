@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Prerequisites:
+# Build and publish the docker images defined in app, sidecar and daemon
+
 # Start cluster
 minikube start -p sre101 --nodes 4
 

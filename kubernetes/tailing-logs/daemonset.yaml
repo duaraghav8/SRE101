@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: auditd
+  namespace: kube-system
+  labels:
+    app: auditd
+spec:
+  selector:
+    matchLabels:
+      name: auditd
+  template:
+    metadata:
+      labels:
+        name: auditd
+    spec:
+      containers:
+      - name: auditd
+        image: duaraghav8/example-daemon:0.0.1
