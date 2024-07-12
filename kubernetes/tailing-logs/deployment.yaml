@@ -18,5 +18,4 @@ spec:
         ports:
         - containerPort: 5000
       - name: auth-agent
-        image: busybox
-        command: ['sh', '-c', 'while true; do echo $(date) renewing authentication token for client; sleep 3; done']
+        image: duaraghav8/sidecar:0.0.1
