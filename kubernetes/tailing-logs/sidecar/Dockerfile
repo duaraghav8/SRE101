@@ -1,10 +1,8 @@
-FROM busybox
+FROM ubuntu
 
-# Copy the script into the container
-COPY sidecar-script.sh /sidecar-script.sh
+WORKDIR /app
 
-# Make the script executable
-RUN chmod +x /sidecar-script.sh
+COPY ./sidecar-script.sh .
+RUN chmod +x ./sidecar-script.sh
 
-# Run the script
-CMD ["/sidecar-script.sh"]
+CMD ["./sidecar-script.sh"]
