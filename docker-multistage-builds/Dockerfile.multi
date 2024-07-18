@@ -19,6 +19,5 @@ FROM alpine:latest
 COPY --from=build /src/app /app
 
 EXPOSE 8000
-
 CMD ["/app"]
 
