@@ -1,0 +1,52 @@
+holmes ask --model "gpt-4o-2024-08-06" "Why is my Nginx pod stuck in Pending state? Can you explain the root cause to me in as much detail as possible? Share the steps I can take to verify the problem myself. If there is any issue with any specific Kubernetes resource, share the name of the resource. Also suggest some solutions to me for this problem and explain them in detail. If there are any technical terms, briefly describe what they mean. If any code changes are involved, feel free to show me some examples of how to apply them."
+User: Why is my Nginx pod stuck in Pending state? Can you explain the root cause to me in as much detail as possible? Share the steps I can take to verify the problem
+myself. If there is any issue with any specific Kubernetes resource, share the name of the resource. Also suggest some solutions to me for this problem and explain them
+in detail. If there are any technical terms, briefly describe what they mean. If any code changes are involved, feel free to show me some examples of how to apply them.
+Running `kubectl get -A --show-labels -o wide pod | grep nginx`                                                                                                tools.py:83
+Running `kubectl describe pod nginx-deployment-675457bd68-zgbwh -n default`                                                                                    tools.py:83
+AI: The Nginx pod nginx-deployment-675457bd68-zgbwh is stuck in the Pending state due to scheduling issues. Here's a detailed breakdown:
+
+                                                                                Root Cause
+
+ 1 Node Affinity/Selector Mismatch: The pod has a node selector node-role.kubernetes.io/app-ready=true, but no nodes match this label.
+ 2 Taints and Tolerations: One node has an untolerated taint {status: pending_upgrade}. Taints are used to repel pods from nodes unless the pod has a matching toleration.
+ 3 Pod Anti-Affinity Rules: One node didn't match the pod anti-affinity rules, which prevent the pod from being scheduled on certain nodes.
+
+                                                                             Steps to Verify
+
+ 1 Check Pod Events: Use kubectl describe pod nginx-deployment-675457bd68-zgbwh -n default to see scheduling events and reasons.
+ 2 Inspect Node Labels: Use kubectl get nodes --show-labels to verify node labels and check if any node has node-role.kubernetes.io/app-ready=true.
+ 3 Check Node Taints: Use kubectl describe node <node-name> to see taints on nodes.
+
+                                                                                Solutions
+
+ 1 Update Node Selector:
+    • Ensure at least one node has the label node-role.kubernetes.io/app-ready=true.
+    • Alternatively, remove or adjust the node selector in the pod spec if not needed.
+   Example:
+
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/app-ready: "true"
+
+ 2 Add Tolerations:
+    • Add a toleration for the taint {status: pending_upgrade} to allow the pod to be scheduled on nodes with this taint.
+   Example:
+
+    spec:
+      tolerations:
+      - key: "status"
+        operator: "Equal"
+        value: "pending_upgrade"
+        effect: "NoSchedule"
+
+ 3 Review Anti-Affinity Rules:
+    • Check and adjust pod anti-affinity rules if they are too restrictive.
+
+                                                                             Technical Terms
+
+ • Node Selector: Constraints that limit a pod to be scheduled on nodes with specific labels.
+ • Taints and Tolerations: Mechanism to ensure pods are not scheduled on inappropriate nodes.
+ • Pod Anti-Affinity: Rules that prevent pods from being scheduled on certain nodes based on existing pods.
+
+Adjusting these configurations should resolve the scheduling issue and allow the pod to transition from Pending to Running.
