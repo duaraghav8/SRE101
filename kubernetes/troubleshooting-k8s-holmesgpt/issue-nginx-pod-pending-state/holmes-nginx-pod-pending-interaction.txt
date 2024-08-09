@@ -1,4 +1,6 @@
 holmes ask --model "gpt-4o-2024-08-06" "Why is my Nginx pod stuck in Pending state? Can you explain the root cause to me in as much detail as possible? Share the steps I can take to verify the problem myself. If there is any issue with any specific Kubernetes resource, share the name of the resource. Also suggest some solutions to me for this problem and explain them in detail. If there are any technical terms, briefly describe what they mean. If any code changes are involved, feel free to show me some examples of how to apply them."
+
+
 User: Why is my Nginx pod stuck in Pending state? Can you explain the root cause to me in as much detail as possible? Share the steps I can take to verify the problem
 myself. If there is any issue with any specific Kubernetes resource, share the name of the resource. Also suggest some solutions to me for this problem and explain them
 in detail. If there are any technical terms, briefly describe what they mean. If any code changes are involved, feel free to show me some examples of how to apply them.
