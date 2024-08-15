@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu-hog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cpu-hog
+  template:
+    metadata:
+      labels:
+        app: cpu-hog
+    spec:
+      containers:
+      - name: cpu-hog
+        # image: vish/stress
+        image: desperex/stress  # this image is just the arm64 version of vish/stress
+        args: ["--cpus", "16"]
+
