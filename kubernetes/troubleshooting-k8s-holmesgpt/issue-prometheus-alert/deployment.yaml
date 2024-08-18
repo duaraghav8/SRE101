@@ -1,20 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: cpu-hog
+  name: memory-demo
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: cpu-hog
-  template:
-    metadata:
-      labels:
-        app: cpu-hog
-    spec:
-      containers:
-      - name: cpu-hog
-        # image: vish/stress
-        image: desperex/stress  # this image is just the arm64 version of vish/stress
-        args: ["--cpus", "16"]
-
+  containers:
+  - name: memory-demo-ctr
+    image: polinux/stress
+    resources:
+      requests:
+        memory: "100Mi"
+      limits:
+        memory: "200Mi"
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
