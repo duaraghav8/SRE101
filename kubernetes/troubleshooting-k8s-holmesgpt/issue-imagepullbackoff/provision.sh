@@ -4,7 +4,7 @@
 
 minikube start
 
-kubectl run foobar --image duaraghav8/payments-app
+kubectl run payments-service --image duaraghav8/payments-app
 
 # Shows that the pod is stuck in ImagePullBackoff
 kubectl get pods
