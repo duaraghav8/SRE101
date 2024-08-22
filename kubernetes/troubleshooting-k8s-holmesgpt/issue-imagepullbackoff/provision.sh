@@ -4,7 +4,8 @@
 
 minikube start
 
-kubectl run payments-service --image duaraghav8/payments-app
+#kubectl run payments-service --image duaraghav8/payments-app
+kubectl apply -f pod.yaml
 
 # Shows that the pod is stuck in ImagePullBackoff
 kubectl get pods
@@ -22,7 +23,4 @@ holmes ask --model "gpt-4o-2024-08-06" "My payments-service Pod is not running b
 source ~/dockerhub-access-token.sh
 kubectl create secret docker-registry dockerhub-access --docker-username duaraghav8 --docker-password=$DOCKERHUB_ACCESS_TOKEN
 
-# Then edit manifest to include the following under spec:
-
-#imagePullSecrets:
-#  - name: dockerhub-access
+kubectl apply -f solution/pod.yaml

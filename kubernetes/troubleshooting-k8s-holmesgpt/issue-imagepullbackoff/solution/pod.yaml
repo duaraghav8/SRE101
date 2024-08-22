@@ -1,0 +1,10 @@
+apiVersion: v1
+  kind: Pod
+  metadata:
+    name: payments-service
+  spec:
+    containers:
+    - name: payments-container
+      image: duaraghav8/payments-app
+    imagePullSecrets:
+      - name: dockerhub-access
