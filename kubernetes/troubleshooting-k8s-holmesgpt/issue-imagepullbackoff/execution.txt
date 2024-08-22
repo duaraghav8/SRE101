@@ -1,0 +1,15 @@
+holmes ask --model "gpt-4o-2024-08-06" "Why is my payments-service pod not running? Explain the problem and suggest some solutions."
+
+User: Why is my payments-service pod not running? Explain the problem and suggest some
+solutions.
+Running `kubectl get -A --show-labels -o wide pod | grep payments-service`        tools.py:83
+Running `kubectl describe pod payments-service -n default`                        tools.py:83
+AI: payments-service pod not running due to ErrImagePull. Image duaraghav8/payments-app cannot be
+pulled. Error: "pull access denied, repository does not exist or may require 'docker login'".
+
+Solutions:
+
+ 1 Verify image name and tag.
+ 2 Check image repository access permissions.
+ 3 Authenticate with Docker registry if private.
+ 4 Ensure image exists in specified registry.
