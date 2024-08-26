@@ -14,3 +14,15 @@ kubectl label nodes staging-m04 node-role.kubernetes.io/app-ready=false
 
 # apply the deployment
 kubectl apply -f nginx-deployment.yaml
+
+
+
+###
+# Solution
+###
+
+kubectl get nodes --show-labels
+
+kubectl get pods
+kubectl label --overwrite nodes staging-m04 node-role.kubernetes.io/app-ready=true
+kubectl get pods --watch
