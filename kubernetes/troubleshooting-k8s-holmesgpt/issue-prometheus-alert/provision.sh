@@ -21,10 +21,11 @@ kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-prometheus
 kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-prometheus 25003:9090
 
 #
+# Make sure to whitelist the port range in firewalls / security groups
 # After this, you can access the UIs at http://<public-ip>:2500{0,1,2,3}
 #
 
 # deploy the cpu intensive application to K8s
 kubectl apply -f deployment.yaml
 
-# few minutes after deploying the cpu hogger, you should start receiving cpu utilisation alert in alertmanager. check the ui.
+# Keep an eye in prometheus UI for Crashloop alert

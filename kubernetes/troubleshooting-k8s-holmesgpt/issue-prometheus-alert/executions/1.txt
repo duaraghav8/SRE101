@@ -1,0 +1,10 @@
+holmes investigate alertmanager --model "gpt-4o-2024-08-06" --alertmanager-url "http://3.9.114.7:25001" --alertmanager-alertname "KubePodCrashLooping"
+Loading alerts from url http://3.9.114.7:25001/api/v2/alerts                                                     plugin.py:73
+Analyzing 1 issues matching filter. Press Ctrl+C to stop.
+Analyzing issue 1/1: KubePodCrashLooping...
+No runbooks found for this issue. Using default behaviour. (Add runbooks to guide the investigation.)
+Running tool: kubectl describe pod memory-demo -n default                                                         tools.py:80
+Running tool: kubectl logs memory-demo -n default                                                                 tools.py:80
+Running tool: kubectl logs memory-demo -n default --previous                                                      tools.py:80
+AI: Memory Limit Exceeded Resource: Pod memory-demo in namespace default Details: Container memory-demo-ctr is configured to use
+350M memory but has a limit of 200Mi, causing it to crash with signal 9 (SIGKILL) due to memory overuse.
