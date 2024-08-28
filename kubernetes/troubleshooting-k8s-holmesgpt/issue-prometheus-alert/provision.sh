@@ -13,6 +13,17 @@ kubectl get pods -l "release=prometheus"
 minikube service prometheus-kube-prometheus-prometheus
 minikube service prometheus-kube-prometheus-alertmanager
 
+# If minikube is deployed remotely and you're accessing prometheus UI from laptop
+kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-alertmanager 25000:8080
+kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-alertmanager 25001:9093
+
+kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-prometheus 25002:8080
+kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-prometheus 25003:9090
+
+#
+# After this, you can access the UIs at http://<public-ip>:2500{0,1,2,3}
+#
+
 # deploy the cpu intensive application to K8s
 kubectl apply -f deployment.yaml
 
