@@ -28,7 +28,7 @@ kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-prometheus
 # After this, you can access the UIs at http://<public-ip>:2500{0,1,2,3}
 #
 
-# Install Robusta
+# (optional) Install Robusta
 # Signup on saas and download the generated_value.yaml on server
 # Also add "enablePrometheusStack: true" in the yaml config file to use robusta in-built prom stack
 
