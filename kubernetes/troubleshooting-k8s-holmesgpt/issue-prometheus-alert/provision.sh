@@ -35,6 +35,9 @@ kubectl port-forward --address 0.0.0.0 svc/prometheus-kube-prometheus-prometheus
 helm repo add robusta https://robusta-charts.storage.googleapis.com && helm repo update
 helm install robusta robusta/robusta -f ./generated_values.yaml --set clusterName=staging
 
+kubectl create namespace applications
+kubectl config set-context --current --namespace applications
+
 # deploy the cpu intensive application to K8s
 kubectl apply -f deployment.yaml
 
