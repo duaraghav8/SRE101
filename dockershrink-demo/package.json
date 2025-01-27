@@ -1,0 +1,37 @@
+{
+  "name": "100-template",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "express": "^4.19.2",
+    "eslint-config-react-app": "^7.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:css": "node-sass src/scss/main.scss dist/css/main.css --output-style compressed"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+  }
+}
